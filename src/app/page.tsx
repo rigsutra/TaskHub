@@ -7,11 +7,18 @@ import {Label} from '@/components/ui/label';
 import {Textarea} from '@/components/ui/textarea';
 import {useState} from 'react';
 
+interface Task {
+  description: string;
+  metaTags: string[];
+  participantLimit: number;
+  participants: number;
+}
+
 export default function Home() {
   const [taskDescription, setTaskDescription] = useState('');
   const [metaTags, setMetaTags] = useState(['', '', '', '', '']);
   const [participantLimit, setParticipantLimit] = useState(5);
-  const [tasks, setTasks] = useState([]);
+  const [tasks, setTasks] = useState<Task[]>([]);
 
   const handleCreateTask = () => {
     const newTask = {
